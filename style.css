@@ -1,0 +1,15 @@
+/* center the boxes */
+.timerbox {
+    margin: auto;
+    margin-bottom: 2%;
+    padding: 2%;
+    border: 1px solid black;
+    border-radius: 2%;
+    width: 50%;
+    text-align: center;
+}
+
+/* make the buttons appear/disappear */
+.hidey {
+    display: none;
+}
