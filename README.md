@@ -7,4 +7,4 @@
 
 ## Attributions
 
-Special thanks to me for making this# process-checker
+Special thanks to me for making this
