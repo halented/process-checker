@@ -12,6 +12,7 @@ function addInstrs() {
         let timer = document.createElement('p')
         timer.innerText = 0
         timer.id = `${instrs[i]} timer`
+        timer.className = 'timer'
 
         let start = document.createElement('button')
         start.innerText = `Start ${instrs[i]}`
@@ -30,6 +31,10 @@ function addInstrs() {
         div.appendChild(end)
         main.appendChild(div)
     }
+    let endMeeting = document.createElement('button')
+    endMeeting.innerText = 'End Meeting!'
+    endMeeting.addEventListener('click', endTheMeeting)
+    main.prepend(endMeeting)
 }
 
 function startTimer(inst) {
@@ -101,6 +106,21 @@ function createTimers(ev){
     instrs = ev.target.names.value.split(",")
     main.innerText = ''
     addInstrs()
+}
+
+function endTheMeeting(){
+    let timers = document.getElementsByClassName("timer")
+    let buttons = document.getElementsByTagName('button')
+    for (let i = 0; i < buttons.length; i++) {
+        // hide all buttons
+        buttons[i].className = 'hidey'
+    }
+    for (let i = 0; i < timers.length; i++) {
+        // turn all timers to minutes
+        let count = parseInt(timers[i].innerText)/60
+        timers[i].innerText = `${count} minute(s)`
+    }
+
 }
 
 addForm()
