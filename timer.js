@@ -1,6 +1,7 @@
 const main = document.getElementById('main');
 let instrs;
 let timerIsRunning = false;
+let currentSpeaker;
 let interval;
 
 function addInstrs() {
@@ -39,25 +40,27 @@ function addInstrs() {
 
 function startTimer(inst) {
     if (timerIsRunning) {
-        bigAngryRedAlert()
+        clearInterval(interval)
+        let start1 = document.getElementById(`${currentSpeaker} start`)
+        start1.className = ''
+        let end1 = document.getElementById(`${currentSpeaker} end`)
+        end1.className = 'hidey'
     }
-    else {
-        // start timer
-        let timerInQuestion = document.getElementById(`${inst} timer`)
-        interval = setInterval(() => {
-            let current = parseInt(timerInQuestion.innerText)
-            timerInQuestion.innerText = current + 1
-        }, 1000);
+    // start timer
+    currentSpeaker = inst
+    let timerInQuestion = document.getElementById(`${inst} timer`)
+    interval = setInterval(() => {
+        let current = parseInt(timerInQuestion.innerText)
+        timerInQuestion.innerText = current + 1
+    }, 1000);
 
-        // switch which button is showing
-        let start = document.getElementById(`${inst} start`)
-        start.className = 'hidey'
-        let end = document.getElementById(`${inst} end`)
-        end.className = ''
+    // switch which button is showing
+    let start = document.getElementById(`${inst} start`)
+    start.className = 'hidey'
+    let end = document.getElementById(`${inst} end`)
+    end.className = ''
 
-        timerIsRunning = true
-    }
-
+    timerIsRunning = true
 }
 
 function endTimer(inst) {
@@ -73,13 +76,6 @@ function endTimer(inst) {
     clearInterval(interval)
 }
 
-function bigAngryRedAlert(){
-    let h1 = document.createElement('h1')
-    h1.style = "color: red"
-    h1.innerText = "ONLY ONE TIMER AT A TIME >:-("
-    main.prepend(h1)
-    setTimeout(function(){ main.removeChild(h1)}, 2500);
-}
 
 function addForm(){
     let form = document.createElement('form')
