@@ -41,10 +41,7 @@ function addInstrs() {
 function startTimer(inst) {
     if (timerIsRunning) {
         clearInterval(interval)
-        let start1 = document.getElementById(`${currentSpeaker} start`)
-        start1.className = ''
-        let end1 = document.getElementById(`${currentSpeaker} end`)
-        end1.className = 'hidey'
+        switchButtons(currentSpeaker, true)
     }
     // start timer
     currentSpeaker = inst
@@ -55,21 +52,14 @@ function startTimer(inst) {
     }, 1000);
 
     // switch which button is showing
-    let start = document.getElementById(`${inst} start`)
-    start.className = 'hidey'
-    let end = document.getElementById(`${inst} end`)
-    end.className = ''
+    switchButtons(inst)
 
     timerIsRunning = true
 }
 
 function endTimer(inst) {
     // switch which button is showing
-    let start = document.getElementById(`${inst} start`)
-    start.className = ''
-    let end = document.getElementById(`${inst} end`)
-    end.className = 'hidey'
-
+    switchButtons(inst, true)
     timerIsRunning = false
 
     // stop timer
@@ -96,6 +86,22 @@ function addForm(){
 
     main.appendChild(form)
 }
+
+function switchButtons(speaker, off=false){
+    let start = document.getElementById(`${speaker} start`)
+    let end = document.getElementById(`${speaker} end`)
+
+    if(off){
+        start.className = ''
+        end.className = 'hidey'
+    }
+    else {
+        start.className = 'hidey'
+        end.className = ''
+    }
+    
+}
+
 
 function createTimers(ev){
     ev.preventDefault()
