@@ -21,7 +21,7 @@ function addInstrs() {
         start.addEventListener("click", () => startTimer(instrs[i]))
 
         let end = document.createElement('button')
-        end.innerText = "End"
+        end.innerText = "Pause"
         end.id = `${instrs[i]} end`
         end.className = 'hidey'
         end.addEventListener("click", () => endTimer(instrs[i]))
@@ -58,16 +58,13 @@ function startTimer(inst) {
 }
 
 function endTimer(inst) {
-    // switch which button is showing
     switchButtons(inst, true)
     timerIsRunning = false
-
-    // stop timer
     clearInterval(interval)
 }
 
 
-function addForm(){
+function addForm() {
     let form = document.createElement('form')
     let lbl = document.createElement('label')
     lbl.innerText = "Please Enter Names of Attendees, Separated by Commas"
@@ -78,7 +75,7 @@ function addForm(){
     sbmt.innerText = "Create Timers"
     sbmt.type = 'submit'
 
-    form.addEventListener('submit', (ev)=> createTimers(ev))
+    form.addEventListener('submit', (ev) => createTimers(ev))
 
     form.appendChild(lbl)
     form.appendChild(input)
@@ -87,11 +84,11 @@ function addForm(){
     main.appendChild(form)
 }
 
-function switchButtons(speaker, off=false){
+function switchButtons(speaker, off = false) {
     let start = document.getElementById(`${speaker} start`)
     let end = document.getElementById(`${speaker} end`)
 
-    if(off){
+    if (off) {
         start.className = ''
         end.className = 'hidey'
     }
@@ -99,18 +96,18 @@ function switchButtons(speaker, off=false){
         start.className = 'hidey'
         end.className = ''
     }
-    
+
 }
 
 
-function createTimers(ev){
+function createTimers(ev) {
     ev.preventDefault()
     instrs = ev.target.names.value.split(",")
     main.innerText = ''
     addInstrs()
 }
 
-function endTheMeeting(){
+function endTheMeeting() {
     let timers = document.getElementsByClassName("timer")
     let buttons = document.getElementsByTagName('button')
     for (let i = 0; i < buttons.length; i++) {
@@ -119,7 +116,7 @@ function endTheMeeting(){
     }
     for (let i = 0; i < timers.length; i++) {
         // turn all timers to minutes
-        let count = parseInt(timers[i].innerText)/60
+        let count = parseInt(timers[i].innerText) / 60
         timers[i].innerText = `${count} minute(s)`
     }
 
