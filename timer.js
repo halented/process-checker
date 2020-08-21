@@ -2,6 +2,7 @@ const main = document.getElementById('main');
 let instrs;
 let timerIsRunning = false;
 let interval;
+let header = document.getElementById('header')
 
 function addInstrs() {
     for (let i = 0; i < instrs.length; i++) {
@@ -34,6 +35,7 @@ function addInstrs() {
     let endMeeting = document.createElement('button')
     endMeeting.innerText = 'End Meeting!'
     endMeeting.addEventListener('click', endTheMeeting)
+    header.innerText = "Welcome to Your Meeting"
     main.prepend(endMeeting)
 }
 
@@ -84,7 +86,7 @@ function bigAngryRedAlert(){
 function addForm(){
     let form = document.createElement('form')
     let lbl = document.createElement('label')
-    lbl.innerText = "Please Enter Names of Attendees, Separated by Commas"
+    lbl.innerText = "Please enter names of attendees, separated by commas:"
     let input = document.createElement('input')
     input.placeholder = "leia, roxane, beyonce..."
     input.name = "names"
