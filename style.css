@@ -1,7 +1,6 @@
 /* center the boxes */
 .timerbox {
-    margin: auto;
-    margin-bottom: 2%;
+    margin: 2%;
     padding: 2%;
     border: 1px solid black;
     border-radius: 2%;
@@ -25,4 +24,15 @@
 
 form {
     text-align: center;
+}
+
+#main {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+#end {
+    width: 30%;
 }

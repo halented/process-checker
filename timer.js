@@ -1,5 +1,5 @@
 const main = document.getElementById('main');
-let instrs;
+let instrs = ["beans", "river", "viri", "wedge", "sig", "rose", "elio", "max", "reilley", "tabitha"];
 let timerIsRunning = false;
 let interval;
 let header = document.getElementById('header')
@@ -35,6 +35,7 @@ function addInstrs() {
     let endMeeting = document.createElement('button')
     endMeeting.innerText = 'End Meeting!'
     endMeeting.addEventListener('click', endTheMeeting)
+    endMeeting.id = 'end'
     header.innerText = "Welcome to Your Meeting"
     main.prepend(endMeeting)
 }
@@ -125,4 +126,5 @@ function endTheMeeting(){
 
 }
 
-addForm()
+// addForm()
+addInstrs()
