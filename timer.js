@@ -128,3 +128,6 @@ function endTheMeeting(){
 
 // addForm()
 addInstrs()
+
+
+// Up next: add a sort so at the end they are sorted by most talkative
